@@ -9,6 +9,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "trash"
     },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAGCZmZlmAAAAlmZmZmkGAGBpZmZmlgYAkPb///+WBgCQ9mZmZpYGAJBmb2ZmlgYAkGZvZmaWBgCQ9mZmZpYGAJD2////lgYAYGlmZmaWBgAAlmZmZmkGAABgmZmZZgAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Minigame"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

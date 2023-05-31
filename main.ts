@@ -2,10 +2,15 @@ namespace SpriteKind {
     export const chest = SpriteKind.create()
     export const shop = SpriteKind.create()
     export const trash = SpriteKind.create()
+    export const minigame = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass3, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level7`)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(7, 13))
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles12, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(2, 2))
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile2, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level1`)
@@ -19,28 +24,26 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.darkGroundCenter, functio
     tiles.setCurrentTilemap(tilemap`level2`)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(25, 2))
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.minigame, function (sprite, otherSprite) {
+    tiles.setCurrentTilemap(tilemap`game`)
+    mySprite3 = sprites.create(assets.image`trash`, SpriteKind.trash)
+    tiles.placeOnTile(mySprite3, tiles.getTileLocation(5, 16))
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.trash, function (sprite, otherSprite) {
-    mySprite3.setPosition(randint(0, 100), randint(0, 100))
+    tiles.placeOnTile(mySprite3, tiles.getTileLocation(randint(1, 9), randint(1, 9)))
     trash1 += 1
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile1, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level1`)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(25, 38))
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorDark2, function (sprite, location) {
-    if (true) {
-        if (true) {
-        	
-        }
-    }
-})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level1`)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(4, 25))
 })
-let trash1 = 0
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
+let trash1 = 0
 mySprite2 = sprites.create(img`
     . . . . f f f f . . . . . 
     . . f f f f f f f f . . . 
@@ -59,7 +62,6 @@ mySprite2 = sprites.create(img`
     . . . f f f f f f . . . . 
     . . . f f . . f f . . . . 
     `, SpriteKind.Player)
-mySprite3 = sprites.create(assets.image`trash`, SpriteKind.trash)
 let mySprite4 = sprites.create(img`
     ....................e2e22e2e....................
     .................222eee22e2e222.................
@@ -110,9 +112,11 @@ let mySprite4 = sprites.create(img`
     .....64eee444c66f4e44e44e44e44ee66c444eee46.....
     ......6ccc666c66e4e44e44e44e44ee66c666ccc6......
     `, SpriteKind.shop)
+let min = sprites.create(assets.image`Minigame`, SpriteKind.minigame)
 controller.moveSprite(mySprite2)
 mySprite4.setScale(2, ScaleAnchor.Middle)
 tiles.setCurrentTilemap(tilemap`level1`)
+tiles.placeOnTile(min, tiles.getTileLocation(0, 2))
 scene.cameraFollowSprite(mySprite2)
 tiles.placeOnTile(mySprite4, tiles.getTileLocation(4, 21))
 characterAnimations.loopFrames(
